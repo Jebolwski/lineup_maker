@@ -1,0 +1,65 @@
+<div>
+  <select name="" id="" #mySelect (change)="onOptionsSelected(mySelect.value)">
+    <option value="f_3_5_2">3-5-2</option>
+    <option value="f_3_4_3">3-4-3</option>
+    <option value="f_3_6_1">3-6-1</option>
+    <option value="f_4_3_3_Defansif">4-3-3 Defansif</option>
+    <option value="f_4_3_3_Atak">4-3-3 Atak</option>
+    <option value="f_4_3_3_Normal">4-3-3</option>
+  </select>
+  <div class="flex justify-center mt-8">
+    <p
+      class="hidden top-[25%] top-[35%] top-[75%] top-[10%] top-[35%] top-[65%] left-[33%] left-[68%] left-[35%] top-[30%] top-[40%] top-[75%] top-[55%] top-[35%] top-[55%] top-[15%] top-[90%] top-[60%] top-[70%] top-[10%] top-[25%] left-[30%] left-[65%] left-[43%] left-[46%] left-[47%] left-[52%]"
+    >
+      x
+    </p>
+    <div class="relative flex justify-center">
+      <img
+        src="https://cdn.pixabay.com/photo/2017/01/31/08/32/field-2023250_960_720.png"
+        alt="Pitch"
+        class="lg:w-3/4 w-5/6"
+      />
+      <div
+        class="w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[18%] top-[50%] -mt-5 text-white text-sm"
+      >
+        GK
+      </div>
+      <div
+        *ngFor="let defender of data.formations[selected].defenders"
+        [class]="
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          defender.left.toString() +
+          '%] top-[' +
+          defender.top.toString() +
+          '%] -mt-5 text-white text-sm'
+        "
+      >
+        {{ defender.name }}
+      </div>
+      <div
+        *ngFor="let midfield of data.formations[selected].midfielders"
+        [class]="
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          midfield.left.toString() +
+          '%] top-[' +
+          midfield.top.toString() +
+          '%] -mt-5 text-white text-sm'
+        "
+      >
+        {{ midfield.name }}
+      </div>
+      <div
+        *ngFor="let attacker of data.formations[selected].attackers"
+        [class]="
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          attacker.left.toString() +
+          '%] top-[' +
+          attacker.top.toString() +
+          '%] -mt-5 text-white text-sm'
+        "
+      >
+        {{ attacker.name }}
+      </div>
+    </div>
+  </div>
+</div>
