@@ -15,4 +15,5 @@ export interface Position {
   left: string;
   top: string;
   name?: string;
+  id: number;
 }

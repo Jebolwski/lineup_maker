@@ -7,9 +7,23 @@
     <option value="f_4_3_3_Atak">4-3-3 Atak</option>
     <option value="f_4_3_3_Normal">4-3-3</option>
   </select>
+  <form
+    [formGroup]="addPlayerForm"
+    (ngSubmit)="addPlayer(playerName || 'sss', id)"
+    class="flex items-center gap-3 kisi-ekle hidden"
+  >
+    <input
+      type="text"
+      placeholder="kişi adi"
+      formControlName="playerName"
+      name="playerName"
+      [(ngModel)]="playerName"
+    />
+    <button type="submit">Submit</button>
+  </form>
   <div class="flex justify-center mt-8">
     <p
-      class="hidden top-[25%] top-[35%] top-[75%] top-[10%] top-[35%] top-[65%] left-[33%] left-[68%] left-[35%] top-[30%] top-[40%] top-[75%] top-[55%] top-[35%] top-[55%] top-[15%] top-[90%] top-[60%] top-[70%] top-[10%] top-[25%] left-[30%] left-[65%] left-[43%] left-[46%] left-[47%] left-[52%]"
+      class="hidden top-[25%] top-[35%] top-[75%] top-[85%] top-[10%] top-[35%] top-[65%] left-[33%] left-[68%] left-[35%] top-[30%] top-[40%] top-[75%] top-[55%] top-[35%] top-[55%] top-[15%] top-[90%] top-[60%] top-[70%] top-[10%] top-[25%] left-[30%] left-[65%] left-[43%] left-[46%] left-[47%] left-[52%]"
     >
       x
     </p>
@@ -17,7 +31,7 @@
       <img
         src="https://cdn.pixabay.com/photo/2017/01/31/08/32/field-2023250_960_720.png"
         alt="Pitch"
-        class="lg:w-3/4 w-5/6"
+        class="lg:w-3/4 w-5/6 select-none"
       />
       <div
         class="w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[18%] top-[50%] -mt-5 text-white text-sm"
@@ -26,8 +40,9 @@
       </div>
       <div
         *ngFor="let defender of data.formations[selected].defenders"
+        (click)="toggleInput(defender.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
@@ -38,8 +53,9 @@
       </div>
       <div
         *ngFor="let midfield of data.formations[selected].midfielders"
+        (click)="toggleInput(midfield.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
@@ -50,8 +66,9 @@
       </div>
       <div
         *ngFor="let attacker of data.formations[selected].attackers"
+        (click)="toggleInput(attacker.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
