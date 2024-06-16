@@ -34,7 +34,7 @@
         class="lg:w-3/4 w-5/6 select-none"
       />
       <div
-        class="w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[18%] top-[50%] -mt-5 text-white text-sm"
+        class="w-10 h-10 p-0 flex justify-center text-xs items-center rounded-full bg-gray-800 border border-gray-500 absolute left-[18%] top-[50%] -mt-5 text-white text-sm"
       >
         GK
       </div>
@@ -42,11 +42,12 @@
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center text-xs items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
-          '%] -mt-5 text-white text-sm'
+          '%] -mt-5 text-white text-sm player-' +
+          defender.id
         "
       >
         {{ defender.name }}
@@ -55,11 +56,12 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center text-xs items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
-          '%] -mt-5 text-white text-sm'
+          '%] -mt-5 text-white text-sm player-' +
+          midfield.id
         "
       >
         {{ midfield.name }}
@@ -68,11 +70,12 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id)"
         [class]="
-          'w-10 h-10 p-0 flex justify-center items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
+          'w-10 h-10 p-0 flex justify-center text-xs items-center rounded-full bg-gray-800 border select-none border-gray-500 absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
-          '%] -mt-5 text-white text-sm'
+          '%] -mt-5 text-white text-sm player-' +
+          attacker.id
         "
       >
         {{ attacker.name }}

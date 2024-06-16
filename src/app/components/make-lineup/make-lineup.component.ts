@@ -152,6 +152,10 @@ export class MakeLineupComponent {
 
   toggleInput(id: number) {
     this.id = id;
+    let div = document.querySelector('.player-' + id);
+    if (div) {
+      div.classList.add('bg-orange-800');
+    }
     let kisi_ekle = document.querySelector('.kisi-ekle');
     if (kisi_ekle?.classList.contains('hidden')) {
       kisi_ekle?.classList.toggle('hidden');
@@ -160,7 +164,13 @@ export class MakeLineupComponent {
 
   addPlayer(name: string, place: any) {
     console.log(name, place);
+    let div = document.querySelector('.player-' + place);
+    if (div) {
+      div.innerHTML = name;
+    }
   }
+
+  selectDiv(id: number) {}
 
   public addPlayerForm: FormGroup = new FormGroup({
     playerName: new FormControl('', [
