@@ -14,6 +14,7 @@ export class MakeLineupComponent {
   url: string = 'assets/formations.json';
   public playerName!: string;
   id!: number;
+  public selectedPosition!: string;
   public inputValue: string = '';
   public selected: string = 'f_3_5_2';
   public data: Formations = {
@@ -142,6 +143,27 @@ export class MakeLineupComponent {
           { left: '65', top: '75', name: 'RW', id: 60 },
         ],
       },
+      f_4_2_3_1: {
+        defender_count: 4,
+        midfield_count: 3,
+        attacking_count: 3,
+        defenders: [
+          { left: '33', top: '15', name: 'LB', id: 61 },
+          { left: '30', top: '35', name: 'CB', id: 62 },
+          { left: '30', top: '65', name: 'CB', id: 63 },
+          { left: '33', top: '85', name: 'RB', id: 64 },
+        ],
+        midfielders: [
+          { left: '42', top: '35', name: 'CDM', id: 65 },
+          { left: '58', top: '50', name: 'CAM', id: 66 },
+          { left: '42', top: '65', name: 'CDM', id: 67 },
+        ],
+        attackers: [
+          { left: '58', top: '15', name: 'LM', id: 68 },
+          { left: '70', top: '50', name: 'ST', id: 69 },
+          { left: '58', top: '85', name: 'RM', id: 70 },
+        ],
+      },
     },
   };
 
@@ -150,11 +172,13 @@ export class MakeLineupComponent {
     console.log(this.data.formations[this.selected].defenders);
   }
 
-  toggleInput(id: number) {
+  toggleInput(id: number, name: string) {
     this.id = id;
+    this.selectedPosition = name;
     let div = document.querySelector('.player-' + id);
     if (div) {
-      div.classList.add('bg-orange-800');
+      div.classList.add('bg-red-700');
+      div.classList.add('border-red-600');
     }
     let kisi_ekle = document.querySelector('.kisi-ekle');
     if (kisi_ekle?.classList.contains('hidden')) {
@@ -168,6 +192,7 @@ export class MakeLineupComponent {
     if (div) {
       div.innerHTML = name;
     }
+    this.playerName = '';
   }
 
   selectDiv(id: number) {}
