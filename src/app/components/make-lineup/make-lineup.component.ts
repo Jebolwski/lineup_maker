@@ -17,6 +17,8 @@ export class MakeLineupComponent {
   public selectedPosition!: string;
   public inputValue: string = '';
   public selected: string = 'f_3_5_2';
+  public primaryColor: string = '#ff0000';
+  public secondaryColor: string = '#fff';
   public data: Formations = {
     formations: {
       f_3_5_2: {
@@ -92,7 +94,7 @@ export class MakeLineupComponent {
         ],
         midfielders: [
           { left: '43', top: '25', name: 'CDM', id: 35 },
-          { left: '48', top: '50', name: 'CM', id: 36 },
+          { left: '52', top: '50', name: 'CM', id: 36 },
           { left: '43', top: '75', name: 'CDM', id: 37 },
         ],
         attackers: [
@@ -171,6 +173,13 @@ export class MakeLineupComponent {
     this.selected = value;
   }
 
+  onPrimarySelected(value: string) {
+    this.primaryColor = value;
+  }
+  onSecondarySelected(value: string) {
+    this.secondaryColor = value;
+  }
+
   toggleInput(id: number, name: string) {
     this.id = id;
     this.selectedPosition = name;
@@ -186,8 +195,8 @@ export class MakeLineupComponent {
     console.log(name, place);
     let div = document.querySelector('.player-' + place);
     if (div) {
-      if (name.length > 9) {
-        div.innerHTML = name.slice(0, 6);
+      if (name.length > 12) {
+        div.innerHTML = name.slice(0, 12);
       } else {
         div.innerHTML = name;
       }
@@ -204,15 +213,4 @@ export class MakeLineupComponent {
       Validators.maxLength(40),
     ]),
   });
-
-  // constructor(public http: HttpClient) {}
-
-  // ngOnInit() {
-  //   console.log('messi');
-
-  //   this.http.get(this.url).subscribe((res) => {
-  //     this.data = res;
-  //     console.log(res);
-  //   });
-  // }
 }
