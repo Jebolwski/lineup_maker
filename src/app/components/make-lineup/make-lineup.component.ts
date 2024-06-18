@@ -169,17 +169,13 @@ export class MakeLineupComponent {
 
   onOptionsSelected(value: string) {
     this.selected = value;
-    console.log(this.data.formations[this.selected].defenders);
   }
 
   toggleInput(id: number, name: string) {
     this.id = id;
     this.selectedPosition = name;
     let div = document.querySelector('.player-' + id);
-    if (div) {
-      div.classList.add('bg-red-700');
-      div.classList.add('border-red-600');
-    }
+
     let kisi_ekle = document.querySelector('.kisi-ekle');
     if (kisi_ekle?.classList.contains('hidden')) {
       kisi_ekle?.classList.toggle('hidden');
@@ -190,7 +186,11 @@ export class MakeLineupComponent {
     console.log(name, place);
     let div = document.querySelector('.player-' + place);
     if (div) {
-      div.innerHTML = name;
+      if (name.length > 9) {
+        div.innerHTML = name.slice(0, 6);
+      } else {
+        div.innerHTML = name;
+      }
     }
     this.playerName = '';
   }
