@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Formations } from '../../interfaces/formations';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,10 @@ declare var $: any;
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
-export class MakeLineupComponent implements AfterViewInit {
+export class MakeLineupComponent implements OnInit {
+  ngOnInit(): void {
+    this.moveable();
+  }
   url: string = 'assets/formations.json';
   public playerName!: string;
   id!: number;
@@ -174,6 +177,7 @@ export class MakeLineupComponent implements AfterViewInit {
 
   onOptionsSelected(value: string) {
     this.selected = value;
+    this.moveable();
   }
 
   onPrimarySelected(value: string) {
@@ -192,6 +196,12 @@ export class MakeLineupComponent implements AfterViewInit {
     if (kisi_ekle?.classList.contains('hidden')) {
       kisi_ekle?.classList.toggle('hidden');
     }
+  }
+
+  moveable() {
+    $(document).ready(function () {
+      $('.player').draggable({ containment: '.contain-drag' });
+    });
   }
 
   addPlayer(name: string, place: any) {
@@ -213,9 +223,4 @@ export class MakeLineupComponent implements AfterViewInit {
       Validators.maxLength(40),
     ]),
   });
-
-  ngAfterViewInit() {
-    // $('.player-644').draggable();
-    // $('.player').draggable();
-  }
 }
