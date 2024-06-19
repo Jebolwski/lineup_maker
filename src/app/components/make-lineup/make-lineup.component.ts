@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Formations } from '../../interfaces/formations';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+declare var $: any;
+
 @Component({
   selector: 'app-make-lineup',
   templateUrl: './make-lineup.component.html',
@@ -10,7 +13,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
-export class MakeLineupComponent {
+export class MakeLineupComponent implements AfterViewInit {
   url: string = 'assets/formations.json';
   public playerName!: string;
   id!: number;
@@ -192,7 +195,6 @@ export class MakeLineupComponent {
   }
 
   addPlayer(name: string, place: any) {
-    console.log(name, place);
     let div = document.querySelector('.player-' + place);
     if (div) {
       if (name.length > 12) {
@@ -204,8 +206,6 @@ export class MakeLineupComponent {
     this.playerName = '';
   }
 
-  selectDiv(id: number) {}
-
   public addPlayerForm: FormGroup = new FormGroup({
     playerName: new FormControl('', [
       Validators.required,
@@ -213,4 +213,9 @@ export class MakeLineupComponent {
       Validators.maxLength(40),
     ]),
   });
+
+  ngAfterViewInit() {
+    // $('.player-644').draggable();
+    // $('.player').draggable();
+  }
 }

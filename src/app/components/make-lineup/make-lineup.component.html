@@ -71,7 +71,7 @@
       />
       <div
         (click)="toggleInput(644, 'GK')"
-        class="lg:w-10 lg:h-10 w-6 h-6 p-0 flex flex-col select-none justify-center text-xs items-center rounded-full absolute left-[18%] top-[50%] -mt-5 text-white"
+        class="lg:w-10 lg:h-10 w-8 h-8 p-0 flex flex-col select-none justify-center lg:text-[10px] text-[8px] player items-center rounded-full absolute left-[18%] top-[50%] -mt-4 text-white"
       >
         <svg
           width="48px"
@@ -161,7 +161,7 @@
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id, defender.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center  select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center player select-none absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
@@ -258,7 +258,7 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id, midfield.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center overflow-hidden select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center overflow-hidden select-none absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
@@ -355,7 +355,7 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id, attacker.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
