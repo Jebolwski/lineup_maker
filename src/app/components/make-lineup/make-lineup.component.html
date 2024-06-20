@@ -49,14 +49,7 @@
     <option value="#ffff00">Sarı</option>
     <option value="#00ff00">Yeşil</option>
   </select>
-  <p>
-    primary
-    {{ primaryColor }}
-  </p>
-  <p>
-    secondary
-    {{ secondaryColor }}
-  </p>
+
   <div class="flex justify-center mt-8">
     <p
       class="hidden top-[25%] top-[35%] top-[75%] top-[85%] top-[10%] left-[42%] left-[58%] left-[70%] top-[35%] top-[65%] left-[33%] left-[68%] left-[35%] top-[30%] top-[40%] top-[75%] top-[55%] top-[35%] top-[55%] top-[15%] top-[90%] top-[60%] top-[70%] top-[10%] top-[25%] left-[30%] left-[65%] left-[43%] left-[46%] left-[47%] left-[52%]"
@@ -71,7 +64,7 @@
       />
       <div
         (click)="toggleInput(644, 'GK')"
-        class="lg:w-10 lg:h-10 w-8 h-8 p-0 flex flex-col select-none justify-center lg:text-[10px] text-[8px] player items-center rounded-full absolute left-[18%] top-[50%] -mt-4 text-white"
+        class="lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col select-none justify-center lg:text-[10px] text-[8px] player items-center rounded-full absolute left-[18%] top-[50%] lg:-mt-6 -mt-5 text-white text-sm"
       >
         <svg
           width="48px"
@@ -161,11 +154,11 @@
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id, defender.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center player select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center player select-none absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
-          '%] lg:-mt-6 -mt-4 text-white text-sm'
+          '%] lg:-mt-6 -mt-5 text-white text-sm'
         "
       >
         <svg
@@ -258,11 +251,11 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id, midfield.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center overflow-hidden select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center overflow-hidden select-none absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
-          '%] lg:-mt-6 -mt-4 text-white text-sm'
+          '%] lg:-mt-6 -mt-5 text-white text-sm'
         "
       >
         <svg
@@ -355,11 +348,11 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id, attacker.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
-          '%] lg:-mt-6 -mt-4 text-white text-sm'
+          '%] lg:-mt-6 -mt-5 text-white text-sm'
         "
       >
         <svg

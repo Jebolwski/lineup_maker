@@ -183,6 +183,7 @@ export class MakeLineupComponent implements OnInit {
   onPrimarySelected(value: string) {
     this.primaryColor = value;
   }
+
   onSecondarySelected(value: string) {
     this.secondaryColor = value;
   }
