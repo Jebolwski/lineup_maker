@@ -199,6 +199,12 @@ export class MakeLineupComponent implements OnInit {
     }
   }
 
+  closeInput() {
+    let kisi_ekle = document.querySelector('.kisi-ekle');
+
+    kisi_ekle?.classList.add('hidden');
+  }
+
   moveable() {
     $(document).ready(function () {
       $('.player').draggable({ containment: '.contain-drag' });

@@ -1,54 +1,95 @@
 <div class="">
-  <select name="" id="" #mySelect (change)="onOptionsSelected(mySelect.value)">
-    <option value="f_3_5_2">3-5-2</option>
-    <option value="f_3_4_3">3-4-3</option>
-    <option value="f_3_6_1">3-6-1</option>
-    <option value="f_4_3_3_Defansif">4-3-3 Defansif</option>
-    <option value="f_4_3_3_Atak">4-3-3 Atak</option>
-    <option value="f_4_3_3_Normal">4-3-3</option>
-    <option value="f_4_2_3_1">4-2-3-1</option>
-  </select>
-  <form
-    [formGroup]="addPlayerForm"
-    (ngSubmit)="addPlayer(playerName || '', id)"
-    class="flex items-center gap-3 kisi-ekle hidden"
-  >
-    <input
-      type="text"
-      [placeholder]="'Enter name of the ' + selectedPosition"
-      formControlName="playerName"
-      name="playerName"
-      class="border border-black"
-      [(ngModel)]="playerName"
-    />
-    <button type="submit" class="border border-black">Submit</button>
-  </form>
-  <p>Ana Renk</p>
-  <select
-    name=""
-    id=""
-    #myPrimary
-    (change)="onPrimarySelected(myPrimary.value)"
-  >
-    <option value="#ff0000">Kırmızı</option>
-    <option value="#fff">Beyaz</option>
-    <option value="#0000ff">Mavi</option>
-    <option value="#ffff00">Sarı</option>
-    <option value="#00ff00">Yeşil</option>
-  </select>
-  <p>İkinci Renk</p>
-  <select
-    name=""
-    id=""
-    #mySecondary
-    (change)="onSecondarySelected(mySecondary.value)"
-  >
-    <option value="#ff0000">Kırmızı</option>
-    <option value="#fff">Beyaz</option>
-    <option value="#0000ff">Mavi</option>
-    <option value="#ffff00">Sarı</option>
-    <option value="#00ff00">Yeşil</option>
-  </select>
+  <div class="flex justify-center">
+    <div class="flex flex-col justify-center lg:w-1/2 w-full lg:p-0 p-3">
+      <div
+        class="bg-gray-200 shadow-md border-2 p-1 border-gray-300 mt-1 rounded-lg"
+      >
+        <p class="font-semibold">Formation</p>
+        <select
+          class="bg-gray-100 rounded-md selection:outline-none focus:outline-none border border-gray-300"
+          #mySelect
+          (change)="onOptionsSelected(mySelect.value)"
+        >
+          <option value="f_3_5_2">3-5-2</option>
+          <option value="f_3_4_3">3-4-3</option>
+          <option value="f_3_6_1">3-6-1</option>
+          <option value="f_4_3_3_Defansif">4-3-3 Defansif</option>
+          <option value="f_4_3_3_Atak">4-3-3 Atak</option>
+          <option value="f_4_3_3_Normal">4-3-3</option>
+          <option value="f_4_2_3_1">4-2-3-1</option>
+        </select>
+      </div>
+      <div
+        class="bg-gray-200 border-2 shadow-md p-1 kisi-ekle border-gray-300 mt-2 rounded-lg hidden"
+      >
+        <form
+          [formGroup]="addPlayerForm"
+          (ngSubmit)="addPlayer(playerName || '', id)"
+          class="flex justify-between"
+        >
+          <div class="flex items-center gap-3">
+            <input
+              type="text"
+              [placeholder]="'Enter the name of the ' + selectedPosition"
+              formControlName="playerName"
+              name="playerName"
+              class="border border-black text-sm rounded-md py-1 px-3 w-5/6 focus:outline-none"
+              [(ngModel)]="playerName"
+            />
+            <button
+              type="submit"
+              class="border rounded-md shadow-md bg-gradient-to-br from-gray-800 to-gray-600 text-white border-black text-sm px-2 py-1"
+            >
+              Submit
+            </button>
+          </div>
+          <svg
+            (click)="closeInput()"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            fill="#ff0000"
+            width="100"
+            height="100"
+            class="w-5 h-5 mt-1 cursor-pointer"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+            ></path>
+          </svg>
+        </form>
+      </div>
+      <div
+        class="bg-gray-200 border-2 p-1 shadow-md border-gray-300 mt-2 rounded-lg"
+      >
+        <p class="font-semibold">Jersey main color</p>
+        <select
+          class="bg-gray-100 rounded-md selection:outline-none focus:outline-none border border-gray-300"
+          #myPrimary
+          (change)="onPrimarySelected(myPrimary.value)"
+        >
+          <option value="#ff0000">Red</option>
+          <option value="#fff">White</option>
+          <option value="#0000ff">Blue</option>
+          <option value="#ffff00">Yellow</option>
+          <option value="#00ff00">Green</option>
+        </select>
+        <p class="font-semibold mt-3">Jersey secondary color</p>
+        <select
+          class="bg-gray-100 rounded-md selection:outline-none focus:outline-none border border-gray-300"
+          #mySecondary
+          (change)="onSecondarySelected(mySecondary.value)"
+        >
+          <option value="#ff0000">Red</option>
+          <option value="#fff">White</option>
+          <option value="#0000ff">Blue</option>
+          <option value="#ffff00">Yellow</option>
+          <option value="#00ff00">Green</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
   <div class="flex justify-center mt-8">
     <p
@@ -56,15 +97,17 @@
     >
       x
     </p>
-    <div class="relative contain-drag flex justify-center">
+    <div
+      class="relative contain-drag flex justify-center lg:w-1/2 w-full lg:p-0 p-3"
+    >
       <img
         src="https://cdn.pixabay.com/photo/2017/01/31/08/32/field-2023250_960_720.png"
         alt="Pitch"
-        class="lg:w-3/4 w-5/6 select-none"
+        class="w-full select-none border border-green-800 shadow-md"
       />
       <div
         (click)="toggleInput(644, 'GK')"
-        class="lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col select-none justify-center lg:text-[10px] text-[8px] player items-center rounded-full absolute left-[18%] top-[50%] lg:-mt-6 -mt-5 text-white text-sm"
+        class="lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
       >
         <svg
           width="48px"
@@ -154,11 +197,11 @@
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id, defender.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] items-center player select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
-          '%] lg:-mt-6 -mt-5 text-white text-sm'
+          '%] lg:-mt-6 -mt-4 text-white text-sm'
         "
       >
         <svg
@@ -251,11 +294,11 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id, midfield.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center overflow-hidden select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] player items-center overflow-hidden select-none absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
-          '%] lg:-mt-6 -mt-5 text-white text-sm'
+          '%] lg:-mt-6 -mt-4 text-white text-sm'
         "
       >
         <svg
@@ -348,11 +391,11 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id, attacker.name || '')"
         [class]="
-          'lg:w-12 lg:h-12 w-10 h-10 p-0 flex flex-col justify-center lg:text-[10px] text-[8px] player items-center select-none absolute left-[' +
+          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
-          '%] lg:-mt-6 -mt-5 text-white text-sm'
+          '%] lg:-mt-6 -mt-4 text-white text-sm'
         "
       >
         <svg
