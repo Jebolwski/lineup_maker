@@ -21,10 +21,14 @@ export class MakeLineupComponent implements OnInit {
   public playerName!: string;
   id!: number;
   public selectedPosition!: string;
+  public selectedPositionDelete!: string;
+  public selectedPositionDeleteId!: number;
   public inputValue: string = '';
   public selected: string = 'f_3_5_2';
   public primaryColor: string = '#ff0000';
   public secondaryColor: string = '#fff';
+  public lessThanEleven: boolean = false;
+
   public data: Formations = {
     formations: {
       f_3_5_2: {
@@ -176,8 +180,12 @@ export class MakeLineupComponent implements OnInit {
   };
 
   onOptionsSelected(value: string) {
+    console.log(value, this.selected);
+
     this.selected = value;
     this.moveable();
+    let x = document.querySelector('.kisi-sil');
+    x?.classList.add('hidden');
   }
 
   onPrimarySelected(value: string) {
@@ -188,20 +196,47 @@ export class MakeLineupComponent implements OnInit {
     this.secondaryColor = value;
   }
 
-  toggleInput(id: number, name: string) {
+  toggleInput(id: number, name: string, event: any) {
     this.id = id;
     this.selectedPosition = name;
-    let div = document.querySelector('.player-' + id);
+    let node = event.target.parentNode;
+    if (node.classList.length == 0) {
+      node = node.parentNode.parentNode;
+    }
+    this.selectedPositionDelete = node.querySelector('.pla').innerHTML;
+    this.selectedPositionDeleteId = id;
 
     let kisi_ekle = document.querySelector('.kisi-ekle');
     if (kisi_ekle?.classList.contains('hidden')) {
       kisi_ekle?.classList.toggle('hidden');
     }
+
+    let kisi_sil = document.querySelector('.kisi-sil');
+    if (kisi_sil?.classList.contains('hidden')) {
+      kisi_sil?.classList.toggle('hidden');
+    }
+  }
+
+  deletePlayer() {
+    let div = document.querySelector(
+      '.player-' + this.selectedPositionDeleteId
+    );
+    let x = div?.parentNode;
+    if (x) {
+      let y = x.parentNode;
+      y?.removeChild(x);
+    }
+
+    this.lessThanEleven = true;
   }
 
   closeInput() {
     let kisi_ekle = document.querySelector('.kisi-ekle');
+    kisi_ekle?.classList.add('hidden');
+  }
 
+  closeRemovePlayer() {
+    let kisi_ekle = document.querySelector('.kisi-sil');
     kisi_ekle?.classList.add('hidden');
   }
 

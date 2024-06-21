@@ -43,22 +43,56 @@
               Submit
             </button>
           </div>
-          <svg
-            (click)="closeInput()"
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            fill="#ff0000"
-            width="100"
-            height="100"
-            class="w-5 h-5 mt-1 cursor-pointer"
-            viewBox="0 0 50 50"
-          >
-            <path
-              d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
-            ></path>
-          </svg>
+          <div class="flex items-center">
+            <svg
+              (click)="closeInput()"
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              fill="#ff0000"
+              width="100"
+              height="100"
+              class="w-5 h-5 font-bold cursor-pointer"
+              viewBox="0 0 50 50"
+            >
+              <path
+                d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+              ></path>
+            </svg>
+          </div>
         </form>
+      </div>
+      <div
+        class="bg-gray-200 border-2 shadow-md p-1 kisi-sil border-gray-300 mt-2 rounded-lg hidden"
+      >
+        <div class="flex justify-between">
+          <div class="flex gap-2 items-center">
+            <p>Remove the player</p>
+            <button
+              (click)="deletePlayer()"
+              class="bg-gradient-to-br from-red-500 to-red-300 text-sm border border-red-500 px-2 rounded-md text-white"
+            >
+              '{{ selectedPositionDelete }}'
+            </button>
+          </div>
+          <div class="flex items-center">
+            <svg
+              (click)="closeRemovePlayer()"
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              fill="#ff0000"
+              width="100"
+              height="100"
+              class="w-5 h-5 font-bold cursor-pointer"
+              viewBox="0 0 50 50"
+            >
+              <path
+                d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
       </div>
       <div
         class="bg-gray-200 border-2 p-1 shadow-md border-gray-300 mt-2 rounded-lg"
@@ -88,6 +122,21 @@
           <option value="#00ff00">Green</option>
         </select>
       </div>
+      <div
+        *ngIf="lessThanEleven"
+        class="bg-gray-200 border-2 p-1 shadow-md border-gray-300 mt-2 rounded-lg"
+      >
+        <button
+          (click)="
+            onOptionsSelected(
+              mySelect.value == 'f_3_5_2' ? 'f_3_6_1' : 'f_3_5_2'
+            )
+          "
+          class="bg-gradient-to-l from-gray-600 to-gray-950 text-white px-2 border border-gray-700 rounded-md"
+        >
+          Reset team
+        </button>
+      </div>
     </div>
   </div>
 
@@ -106,7 +155,7 @@
         class="w-full select-none border border-green-800 shadow-md"
       />
       <div
-        (click)="toggleInput(644, 'GK')"
+        (click)="toggleInput(644, 'GK', $event)"
         class="lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
       >
         <svg
@@ -191,11 +240,11 @@
             ></path>
           </g>
         </svg>
-        <p class="player-644">GK</p>
+        <p class="pla player-644">GK</p>
       </div>
       <div
         *ngFor="let defender of data.formations[selected].defenders"
-        (click)="toggleInput(defender.id, defender.name || '')"
+        (click)="toggleInput(defender.id, defender.name || '', $event)"
         [class]="
           'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
           defender.left.toString() +
@@ -286,13 +335,13 @@
             ></path>
           </g>
         </svg>
-        <p [class]="'player-' + defender.id">
+        <p [class]="'pla player-' + defender.id">
           {{ defender.name }}
         </p>
       </div>
       <div
         *ngFor="let midfield of data.formations[selected].midfielders"
-        (click)="toggleInput(midfield.id, midfield.name || '')"
+        (click)="toggleInput(midfield.id, midfield.name || '', $event)"
         [class]="
           'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] player items-center overflow-hidden select-none absolute left-[' +
           midfield.left.toString() +
@@ -383,13 +432,13 @@
             ></path>
           </g>
         </svg>
-        <p [class]="'player-' + midfield.id">
+        <p [class]="'pla player-' + midfield.id">
           {{ midfield.name }}
         </p>
       </div>
       <div
         *ngFor="let attacker of data.formations[selected].attackers"
-        (click)="toggleInput(attacker.id, attacker.name || '')"
+        (click)="toggleInput(attacker.id, attacker.name || '', $event)"
         [class]="
           'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
@@ -480,7 +529,7 @@
             ></path>
           </g>
         </svg>
-        <p [class]="'player-' + attacker.id">
+        <p [class]="'pla player-' + attacker.id">
           {{ attacker.name }}
         </p>
       </div>
