@@ -22,11 +22,7 @@
       <div
         class="bg-gray-200 border-2 shadow-md p-1 kisi-ekle border-gray-300 mt-2 rounded-lg hidden"
       >
-        <form
-          [formGroup]="addPlayerForm"
-          (ngSubmit)="addPlayer(playerName || '', id)"
-          class="flex justify-between"
-        >
+        <form [formGroup]="addPlayerForm" class="flex justify-between">
           <div class="flex items-center gap-3">
             <input
               type="text"
@@ -37,10 +33,17 @@
               [(ngModel)]="playerName"
             />
             <button
+              (click)="addPlayer(playerName || '', id)"
               type="submit"
               class="border rounded-md shadow-md bg-gradient-to-br from-gray-800 to-gray-600 text-white border-black text-sm px-2 py-1"
             >
               Submit
+            </button>
+            <button
+              (click)="getPlayers()"
+              class="bg-gradient-to-br from-green-700 to-green-900 text-white w-36 py-1 px-2 rounded-md shadow-md border border-green-600 text-sm"
+            >
+              Find Player
             </button>
           </div>
           <div class="flex items-center">

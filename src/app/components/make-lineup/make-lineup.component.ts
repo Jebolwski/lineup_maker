@@ -3,6 +3,8 @@ import { Formations } from '../../interfaces/formations';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Response } from '../../interfaces/response';
 
 declare var $: any;
 
@@ -17,6 +19,8 @@ export class MakeLineupComponent implements OnInit {
   ngOnInit(): void {
     this.moveable();
   }
+
+  constructor(private http: HttpClient) {}
   url: string = 'assets/formations.json';
   public playerName!: string;
   id!: number;
@@ -28,6 +32,7 @@ export class MakeLineupComponent implements OnInit {
   public primaryColor: string = '#ff0000';
   public secondaryColor: string = '#fff';
   public lessThanEleven: boolean = false;
+  private baseUrl = 'https://createformation.com/search?q=';
 
   public data: Formations = {
     formations: {
@@ -180,8 +185,6 @@ export class MakeLineupComponent implements OnInit {
   };
 
   onOptionsSelected(value: string) {
-    console.log(value, this.selected);
-
     this.selected = value;
     this.moveable();
     let x = document.querySelector('.kisi-sil');
@@ -265,4 +268,35 @@ export class MakeLineupComponent implements OnInit {
       Validators.maxLength(40),
     ]),
   });
+
+  getPlayers(): any {
+    console.log(this.playerName, 'geldi abi');
+    let requestOptions: any = {
+      method: 'GET',
+      redirect: 'follow',
+    };
+    fetch(
+      'https://createformation.com/search?q=baka&clubSearch=false',
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+    // return this.http
+    //   .post(this.baseUrl + this.playerName + '&clubSearch=false', {
+    //     mode: 'cors',
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   })
+    //   .subscribe((res: any) => {
+    //     // let response: Response = res;
+    //     console.log(res);
+
+    //     // if (response.statusCode === 200) {
+    //     // } else {
+    //     // }
+    //   });
+  }
 }

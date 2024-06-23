@@ -70,6 +70,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "make-team:build",
+            "proxyConfig": "proxy.config.js"
+          },
           "configurations": {
             "production": {
               "buildTarget": "make-team:build:production"
