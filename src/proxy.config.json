@@ -1,0 +1,8 @@
+{
+  "/search": {
+    "target": "https://createformation.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

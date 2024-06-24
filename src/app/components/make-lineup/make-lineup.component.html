@@ -23,13 +23,13 @@
         class="bg-gray-200 border-2 shadow-md p-1 kisi-ekle border-gray-300 mt-2 rounded-lg hidden"
       >
         <form [formGroup]="addPlayerForm" class="flex justify-between">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3 relative">
             <input
               type="text"
               [placeholder]="'Enter the name of the ' + selectedPosition"
               formControlName="playerName"
               name="playerName"
-              class="border border-black text-sm rounded-md py-1 px-3 w-5/6 focus:outline-none"
+              class="border border-black text-sm rounded-md py-1 px-3 focus:outline-none lg:w-48 w-24"
               [(ngModel)]="playerName"
             />
             <button
@@ -45,6 +45,27 @@
             >
               Find Player
             </button>
+            <div
+              *ngIf="searchedPlayers.length > 0"
+              class="absolute bg-gray-100 border border-gray-200 rounded-md shadow-md top-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
+            >
+              <div
+                class="flex items-center gap-2"
+                *ngFor="let player of searchedPlayers"
+              >
+                <img
+                  [src]="
+                    'https://d13ni07q601mto.cloudfront.net/' +
+                    player.s3url +
+                    '.png'
+                  "
+                  class="w-8"
+                />
+                <p class="text-[1.2rem]">{{ player.text }}</p>
+                <p class="">|</p>
+                <p class="">{{ player.pos }}</p>
+              </div>
+            </div>
           </div>
           <div class="flex items-center">
             <svg

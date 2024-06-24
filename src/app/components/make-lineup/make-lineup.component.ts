@@ -32,6 +32,7 @@ export class MakeLineupComponent implements OnInit {
   public primaryColor: string = '#ff0000';
   public secondaryColor: string = '#fff';
   public lessThanEleven: boolean = false;
+  public searchedPlayers: any = [];
   private baseUrl = 'https://createformation.com/search?q=';
 
   public data: Formations = {
@@ -275,28 +276,12 @@ export class MakeLineupComponent implements OnInit {
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(
-      'https://createformation.com/search?q=baka&clubSearch=false',
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+    fetch('/search?q=' + this.playerName + '&clubSearch=false', requestOptions)
+      .then(async (response) => {
+        let data = await response.json();
+        this.searchedPlayers = data;
+        console.log(this.searchedPlayers);
+      })
       .catch((error) => console.error(error));
-    // return this.http
-    //   .post(this.baseUrl + this.playerName + '&clubSearch=false', {
-    //     mode: 'cors',
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   })
-    //   .subscribe((res: any) => {
-    //     // let response: Response = res;
-    //     console.log(res);
-
-    //     // if (response.statusCode === 200) {
-    //     // } else {
-    //     // }
-    //   });
   }
 }
