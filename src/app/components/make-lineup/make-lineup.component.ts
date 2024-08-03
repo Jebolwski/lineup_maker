@@ -275,9 +275,13 @@ export class MakeLineupComponent implements OnInit {
     let requestOptions: any = {
       method: 'GET',
       redirect: 'follow',
-      'Access-Control-Allow-Origin': '*',
     };
-    fetch('/search?q=' + this.playerName + '&clubSearch=false', requestOptions)
+    fetch(
+      'https://createformation.com/search?q=' +
+        this.playerName +
+        '&clubSearch=false',
+      requestOptions
+    )
       .then(async (response) => {
         let data = await response.json();
         this.searchedPlayers = data;
