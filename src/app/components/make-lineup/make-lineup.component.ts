@@ -3,8 +3,7 @@ import { Formations } from '../../interfaces/formations';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Response } from '../../interfaces/response';
+import { DataService } from '../../services/data.service';
 
 declare var $: any;
 
@@ -20,8 +19,9 @@ export class MakeLineupComponent implements OnInit {
     this.moveable();
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
   url: string = 'assets/formations.json';
+
   public playerName!: string;
   id!: number;
   public selectedPosition!: string;
@@ -33,7 +33,6 @@ export class MakeLineupComponent implements OnInit {
   public secondaryColor: string = '#fff';
   public lessThanEleven: boolean = false;
   public searchedPlayers: any = [];
-  private baseUrl = 'https://createformation.com/search?q=';
 
   public data: Formations = {
     formations: {
@@ -271,22 +270,9 @@ export class MakeLineupComponent implements OnInit {
   });
 
   getPlayers(): any {
-    console.log(this.playerName, 'geldi abi');
-    let requestOptions: any = {
-      method: 'GET',
-      redirect: 'follow',
-    };
-    fetch(
-      'https://createformation.com/search?q=' +
-        this.playerName +
-        '&clubSearch=false',
-      requestOptions
-    )
-      .then(async (response) => {
-        let data = await response.json();
-        this.searchedPlayers = data;
-        console.log(this.searchedPlayers);
-      })
-      .catch((error) => console.error(error));
+    this.dataService.getData().subscribe((data: any) => {
+      this.data = data;
+      console.log(this.data);
+    });
   }
 }
