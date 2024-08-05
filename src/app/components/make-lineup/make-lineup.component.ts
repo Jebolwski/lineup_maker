@@ -34,6 +34,8 @@ export class MakeLineupComponent implements OnInit {
   public lessThanEleven: boolean = false;
   public searchedPlayers: any = [];
 
+  public playersData: any = [];
+
   public data: Formations = {
     formations: {
       f_3_5_2: {
@@ -271,8 +273,14 @@ export class MakeLineupComponent implements OnInit {
 
   getPlayers(): any {
     this.dataService.getData().subscribe((data: any) => {
-      this.data = data;
+      this.playersData = data;
       console.log(this.data);
     });
+
+    if (this.playerName.length >= 3) {
+      this.searchedPlayers = this.playersData.filter((x: any) =>
+        x.name.includes(this.playerName)
+      );
+    }
   }
 }
