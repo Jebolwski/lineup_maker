@@ -274,13 +274,15 @@ export class MakeLineupComponent implements OnInit {
   getPlayers(): any {
     this.dataService.getData().subscribe((data: any) => {
       this.playersData = data;
-      console.log(this.data);
-    });
+      console.log(this.playersData, 'ammo', this.playersData.players);
 
-    if (this.playerName.length >= 3) {
-      this.searchedPlayers = this.playersData.filter((x: any) =>
-        x.name.includes(this.playerName)
-      );
-    }
+      if (this.playerName.length >= 3) {
+        this.searchedPlayers = this.playersData.players.filter((x: any) => {
+          return x.name.toLowerCase().includes(this.playerName.toLowerCase());
+        });
+
+        console.log(this.searchedPlayers);
+      }
+    });
   }
 }

@@ -53,17 +53,10 @@
                 class="flex items-center gap-2 my-1 bg-gray-200 rounded-md border border-gray-300"
                 *ngFor="let player of searchedPlayers"
               >
-                <img
-                  [src]="
-                    'https://d13ni07q601mto.cloudfront.net/' +
-                    player.s3url +
-                    '.png'
-                  "
-                  class="w-8"
-                />
-                <p class="text-[1.2rem]">{{ player.text }}</p>
+                <img [src]="player.photo" class="w-8" />
+                <p class="text-[1.2rem]">{{ player.name }}</p>
                 <p class="">|</p>
-                <p class="">{{ player.pos }}</p>
+                <p class="">{{ player.position }}</p>
               </div>
             </div>
           </div>
@@ -163,7 +156,6 @@
       </div>
     </div>
   </div>
-
   <div class="flex justify-center mt-8">
     <p
       class="hidden top-[25%] top-[35%] top-[75%] top-[85%] top-[10%] left-[42%] left-[58%] left-[70%] top-[35%] top-[65%] left-[33%] left-[68%] left-[35%] top-[30%] top-[40%] top-[75%] top-[55%] top-[35%] top-[55%] top-[15%] top-[90%] top-[60%] top-[70%] top-[10%] top-[25%] left-[30%] left-[65%] left-[43%] left-[46%] left-[47%] left-[52%]"
