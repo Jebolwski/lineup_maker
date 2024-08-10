@@ -47,11 +47,31 @@
             </button>
             <div
               *ngIf="searchedPlayers.length > 0"
-              class="absolute bg-gray-100 border border-gray-200 rounded-md shadow-md top-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
+              class="absolute bg-gray-100 border players-div border-gray-200 rounded-md shadow-md top-8 pt-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
             >
+              <p class="absolute top-2 left-2 font-semibold">Players</p>
+              <div class="absolute right-4 top-[13px]">
+                <svg
+                  (click)="closeDiv()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  fill="#ff0000"
+                  width="100"
+                  height="100"
+                  class="w-4 h-4 font-bold cursor-pointer"
+                  viewBox="0 0 50 50"
+                >
+                  <path
+                    d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+                  ></path>
+                </svg>
+              </div>
+
               <div
                 class="flex items-center gap-2 my-1 bg-gray-200 rounded-md border border-gray-300"
                 *ngFor="let player of searchedPlayers"
+                (click)="addPlayerToFormation(player || '', id)"
               >
                 <img [src]="player.photo" class="w-8" />
                 <p class="text-[1.2rem]">{{ player.name }}</p>
@@ -351,6 +371,11 @@
             ></path>
           </g>
         </svg>
+        <img
+          src=""
+          [class]="'pla player-' + defender.id + '-photo hidden'"
+          class="w-8 h-8"
+        />
         <p [class]="'pla player-' + defender.id">
           {{ defender.name }}
         </p>
@@ -448,6 +473,11 @@
             ></path>
           </g>
         </svg>
+        <img
+          src=""
+          [class]="'pla player-' + midfield.id + '-photo hidden'"
+          class="w-8 h-8"
+        />
         <p [class]="'pla player-' + midfield.id">
           {{ midfield.name }}
         </p>
@@ -545,6 +575,11 @@
             ></path>
           </g>
         </svg>
+        <img
+          src=""
+          [class]="'pla player-' + attacker.id + '-photo hidden'"
+          class="w-8 h-8"
+        />
         <p [class]="'pla player-' + attacker.id">
           {{ attacker.name }}
         </p>

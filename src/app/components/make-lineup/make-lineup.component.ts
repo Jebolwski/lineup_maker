@@ -271,18 +271,32 @@ export class MakeLineupComponent implements OnInit {
     ]),
   });
 
+  closeDiv() {
+    document.querySelector('.players-div')?.classList.toggle('hidden');
+  }
+
   getPlayers(): any {
     this.dataService.getData().subscribe((data: any) => {
       this.playersData = data;
-      console.log(this.playersData, 'ammo', this.playersData.players);
-
+      document.querySelector('.players-div')?.classList.toggle('hidden');
       if (this.playerName.length >= 3) {
         this.searchedPlayers = this.playersData.players.filter((x: any) => {
           return x.name.toLowerCase().includes(this.playerName.toLowerCase());
         });
-
-        console.log(this.searchedPlayers);
       }
     });
+  }
+
+  addPlayerToFormation(player_data: any, place: any) {
+    let div = document.querySelector('.player-' + place);
+    if (div) {
+      div.innerHTML = player_data.name;
+    }
+    let photo: any = document.querySelector('.player-' + place + '-photo');
+    photo.classList.toggle('hidden');
+    console.log(photo);
+
+    photo.src = player_data.photo;
+    this.playerName = '';
   }
 }
