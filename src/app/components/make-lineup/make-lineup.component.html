@@ -69,7 +69,7 @@
               </div>
 
               <div
-                class="flex items-center gap-2 my-1 bg-gray-200 rounded-md border border-gray-300"
+                class="flex items-center gap-2 my-1 bg-gray-200 rounded-md border cursor-pointer border-gray-300"
                 *ngFor="let player of searchedPlayers"
                 (click)="addPlayerToFormation(player || '', id)"
               >
@@ -77,6 +77,8 @@
                 <p class="text-[1.2rem]">{{ player.name }}</p>
                 <p class="">|</p>
                 <p class="">{{ player.position }}</p>
+                <p class="">|</p>
+                <p class="">{{ player.age }}</p>
               </div>
             </div>
           </div>
@@ -109,7 +111,7 @@
               (click)="deletePlayer()"
               class="bg-gradient-to-br from-red-500 to-red-300 text-sm border border-red-500 px-2 rounded-md text-white"
             >
-              '{{ selectedPositionDelete }}'
+              '{{ selectedPosition }}'
             </button>
           </div>
           <div class="flex items-center">
@@ -192,11 +194,11 @@
       />
       <div
         (click)="toggleInput(644, 'GK', $event)"
-        class="lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
+        class="lg:w-14 lg:h-14 w-10 h-10 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
       >
         <svg
-          width="48px"
-          height="48px"
+          width="20px"
+          height="20px"
           viewBox="267 346 216 219"
           class="jersey-svg"
         >
@@ -276,13 +278,22 @@
             ></path>
           </g>
         </svg>
-        <p class="pla player-644">GK</p>
+        <img
+          src=""
+          [class]="'pla player-644-photo hidden'"
+          class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
+        />
+        <p
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center pla player-644"
+        >
+          GK
+        </p>
       </div>
       <div
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id, defender.name || '', $event)"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
+          'lg:w-14 lg:h-14 w-10 h-10 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
@@ -290,8 +301,8 @@
         "
       >
         <svg
-          width="48px"
-          height="48px"
+          width="20px"
+          height="20px"
           viewBox="267 346 216 219"
           class="jersey-svg"
         >
@@ -374,9 +385,12 @@
         <img
           src=""
           [class]="'pla player-' + defender.id + '-photo hidden'"
-          class="w-8 h-8"
+          class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
         />
-        <p [class]="'pla player-' + defender.id">
+        <p
+          [class]="'pla player-' + defender.id"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+        >
           {{ defender.name }}
         </p>
       </div>
@@ -384,7 +398,7 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id, midfield.name || '', $event)"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] player items-center overflow-hidden select-none absolute left-[' +
+          'lg:w-14 lg:h-14 w-10 h-10 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
@@ -392,8 +406,8 @@
         "
       >
         <svg
-          width="48px"
-          height="48px"
+          width="20px"
+          height="20px"
           viewBox="267 346 216 219"
           class="jersey-svg"
         >
@@ -476,9 +490,12 @@
         <img
           src=""
           [class]="'pla player-' + midfield.id + '-photo hidden'"
-          class="w-8 h-8"
+          class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
         />
-        <p [class]="'pla player-' + midfield.id">
+        <p
+          [class]="'pla player-' + midfield.id"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+        >
           {{ midfield.name }}
         </p>
       </div>
@@ -486,7 +503,7 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id, attacker.name || '', $event)"
         [class]="
-          'lg:w-12 lg:h-12 w-8 h-8 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
+          'lg:w-14 lg:h-14 w-10 h-10 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
@@ -494,8 +511,8 @@
         "
       >
         <svg
-          width="48px"
-          height="48px"
+          width="20px"
+          height="20px"
           viewBox="267 346 216 219"
           class="jersey-svg"
         >
@@ -578,9 +595,12 @@
         <img
           src=""
           [class]="'pla player-' + attacker.id + '-photo hidden'"
-          class="w-8 h-8"
+          class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
         />
-        <p [class]="'pla player-' + attacker.id">
+        <p
+          [class]="'pla player-' + attacker.id"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+        >
           {{ attacker.name }}
         </p>
       </div>

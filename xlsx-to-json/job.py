@@ -39,6 +39,7 @@ for row in sheet.iter_rows(values_only=True):
     if yas==None:
         data={
             "name":satir[2],
+            "full_name":satir[3],
             "position":satir[4],
             "rating":satir[5],
             "age":str(int(satir[9]) + 2),
@@ -50,6 +51,7 @@ for row in sheet.iter_rows(values_only=True):
     else:
         data={
             "name":satir[2],
+            "full_name":satir[3],
             "position":satir[4],
             "rating":satir[5],
             "age":yas,

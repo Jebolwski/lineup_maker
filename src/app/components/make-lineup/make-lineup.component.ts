@@ -223,9 +223,12 @@ export class MakeLineupComponent implements OnInit {
   }
 
   deletePlayer() {
+    console.log(this.selectedPositionDeleteId);
     let div = document.querySelector(
-      '.player-' + this.selectedPositionDeleteId
+      '.player-' + this.selectedPositionDeleteId.toString()
     );
+    console.log(div, '.player-' + this.selectedPositionDeleteId);
+
     let x = div?.parentNode;
     if (x) {
       let y = x.parentNode;
@@ -281,22 +284,29 @@ export class MakeLineupComponent implements OnInit {
       document.querySelector('.players-div')?.classList.toggle('hidden');
       if (this.playerName.length >= 3) {
         this.searchedPlayers = this.playersData.players.filter((x: any) => {
-          return x.name.toLowerCase().includes(this.playerName.toLowerCase());
+          return x.full_name
+            .toLowerCase()
+            .includes(this.playerName.toLowerCase());
         });
       }
     });
   }
 
   addPlayerToFormation(player_data: any, place: any) {
+    console.log(player_data, place);
+
     let div = document.querySelector('.player-' + place);
     if (div) {
       div.innerHTML = player_data.name;
     }
     let photo: any = document.querySelector('.player-' + place + '-photo');
-    photo.classList.toggle('hidden');
+    if (photo.classList.contains('hidden')) {
+      photo.classList.toggle('hidden');
+    }
     console.log(photo);
 
     photo.src = player_data.photo;
     this.playerName = '';
+    this.closeDiv();
   }
 }
