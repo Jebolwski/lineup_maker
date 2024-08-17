@@ -1,14 +1,14 @@
-<div class="">
+<div class="bg-zinc-800 h-screen">
   <div class="flex justify-center">
     <div
       class="flex flex-col justify-center lg:w-1/2 w-full lg:p-0 p-3 text-white"
     >
       <div
-        class="bg-gray-700 shadow-md border-2 p-1 border-gray-600 mt-1 rounded-lg"
+        class="bg-zinc-700 shadow-lg border-2 p-1 border-zinc-600 mt-1 rounded-lg"
       >
         <p class="font-semibold">Formation</p>
         <select
-          class="bg-gray-800 rounded-md shadow-md selection:outline-none text-white focus:outline-none border border-gray-600"
+          class="bg-zinc-800 rounded-md shadow-md selection:outline-none text-white focus:outline-none border border-zinc-600"
           #mySelect
           (change)="onOptionsSelected(mySelect.value)"
         >
@@ -22,7 +22,7 @@
         </select>
       </div>
       <div
-        class="bg-gray-700 border-2 shadow-md p-1 kisi-ekle border-gray-600 mt-2 rounded-lg hidden"
+        class="bg-zinc-700 border-2 shadow-md p-1 kisi-ekle border-zinc-600 mt-2 rounded-lg hidden"
       >
         <form [formGroup]="addPlayerForm" class="flex justify-between">
           <div class="flex items-center gap-3 relative">
@@ -31,13 +31,13 @@
               [placeholder]="'Enter the name of the ' + selectedPosition"
               formControlName="playerName"
               name="playerName"
-              class="border border-black text-sm rounded-md py-1 px-3 focus:outline-none lg:w-48 w-24"
+              class="border border-black text-black text-sm rounded-md py-1 px-3 focus:outline-none lg:w-48 w-24"
               [(ngModel)]="playerName"
             />
             <button
               (click)="addPlayer(playerName || '', id)"
               type="submit"
-              class="border rounded-md shadow-md bg-gradient-to-br from-gray-800 to-gray-600 text-white border-black text-sm px-2 py-1"
+              class="border rounded-md shadow-md bg-gradient-to-br from-zinc-800 to-zinc-600 text-white border-black text-sm px-2 py-1"
             >
               Submit
             </button>
@@ -49,7 +49,7 @@
             </button>
             <div
               *ngIf="searchedPlayers.length > 0"
-              class="absolute bg-gray-800 border players-div border-gray-700 rounded-md shadow-md top-8 pt-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
+              class="absolute bg-zinc-800 border players-div border-zinc-700 rounded-md shadow-md top-8 pt-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
             >
               <p class="absolute top-2 left-2 font-semibold">Players</p>
               <div class="absolute right-4 top-[13px]">
@@ -71,7 +71,7 @@
               </div>
 
               <div
-                class="flex items-center gap-2 my-1 bg-gray-700 rounded-md border cursor-pointer border-gray-600"
+                class="flex items-center gap-2 my-1 bg-zinc-700 rounded-md border cursor-pointer border-zinc-600"
                 *ngFor="let player of searchedPlayers"
                 (click)="addPlayerToFormation(player || '', id)"
               >
@@ -104,7 +104,7 @@
         </form>
       </div>
       <div
-        class="bg-gray-700 border-2 shadow-md p-1 kisi-sil border-gray-600 mt-2 rounded-lg hidden"
+        class="bg-zinc-700 border-2 shadow-md p-1 kisi-sil border-zinc-600 mt-2 rounded-lg hidden"
       >
         <div class="flex justify-between">
           <div class="flex gap-2 items-center">
@@ -136,11 +136,11 @@
         </div>
       </div>
       <div
-        class="bg-gray-700 border-2 p-1 shadow-md border-gray-600 mt-2 rounded-lg"
+        class="bg-zinc-700 border-2 p-1 shadow-md border-zinc-600 mt-2 rounded-lg"
       >
         <p class="font-semibold">Jersey main color</p>
         <select
-          class="bg-gray-800 shadow-md rounded-md selection:outline-none focus:outline-none border border-gray-600"
+          class="bg-zinc-800 shadow-md rounded-md selection:outline-none focus:outline-none border border-zinc-600"
           #myPrimary
           (change)="onPrimarySelected(myPrimary.value)"
         >
@@ -152,7 +152,7 @@
         </select>
         <p class="font-semibold mt-3">Jersey secondary color</p>
         <select
-          class="bg-gray-800 rounded-md shadow-md selection:outline-none focus:outline-none border border-gray-600"
+          class="bg-zinc-800 rounded-md shadow-md selection:outline-none focus:outline-none border border-zinc-600"
           #mySecondary
           (change)="onSecondarySelected(mySecondary.value)"
         >
@@ -165,7 +165,7 @@
       </div>
       <div
         *ngIf="lessThanEleven"
-        class="bg-gray-700 border-2 p-1 shadow-md border-gray-600 mt-2 rounded-lg"
+        class="bg-zinc-700 border-2 p-1 shadow-md border-zinc-600 mt-2 rounded-lg"
       >
         <button
           (click)="
@@ -173,7 +173,7 @@
               mySelect.value == 'f_3_5_2' ? 'f_3_6_1' : 'f_3_5_2'
             )
           "
-          class="bg-gradient-to-l from-gray-600 to-gray-950 text-white px-2 border border-gray-700 rounded-md"
+          class="bg-gradient-to-l from-zinc-600 to-zinc-950 text-white px-2 border border-zinc-700 rounded-md"
         >
           Reset team
         </button>
@@ -192,7 +192,7 @@
       <img
         src="https://cdn.pixabay.com/photo/2017/01/31/08/32/field-2023250_960_720.png"
         alt="Pitch"
-        class="w-full select-none border-2 border-green-700 shadow-lg rounded-sm"
+        class="w-full select-none border-2 border-green-700 shadow-lg rounded-md"
       />
       <div
         (click)="toggleInput(644, 'GK', $event)"

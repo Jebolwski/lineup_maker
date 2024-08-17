@@ -3,7 +3,7 @@ import { MakeLineupComponent } from './components/make-lineup/make-lineup.compon
 
 export const routes: Routes = [
   {
-    path: 'make-lineup',
+    path: '',
     component: MakeLineupComponent,
     title: 'Kadro Oluştur',
   },
