@@ -196,13 +196,13 @@
       />
       <div
         (click)="toggleInput(644, 'GK', $event)"
-        class="lg:w-14 lg:h-14 w-10 h-10 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
+        class="xl:w-14 xl:h-14 lg:w-12 lg:h-12 md:w-10 md:h-10 w-7 h-7 cursor-pointer p-0 flex flex-col select-none justify-center lg:text-[11px] text-[7px] player items-center rounded-full absolute left-[10%] top-[50%] lg:-mt-6 -mt-4 text-white text-sm"
       >
         <svg
           width="20px"
           height="20px"
           viewBox="267 346 216 219"
-          class="jersey-svg"
+          class="jersey-svg xl:w-6 lg:w-5 md:w-3 w-2"
         >
           <defs>
             <radialGradient
@@ -286,7 +286,7 @@
           class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
         />
         <p
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center pla player-644"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center pla player-644"
         >
           GK
         </p>
@@ -295,7 +295,7 @@
         *ngFor="let defender of data.formations[selected].defenders"
         (click)="toggleInput(defender.id, defender.name || '', $event)"
         [class]="
-          'lg:w-14 lg:h-14 w-10 h-10 cursor-pointer p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
+          'xl:w-14 xl:h-14 lg:w-12 lg:h-12 md:w-10 md:h-10 w-7 h-7 p-0 flex flex-col justify-center lg:text-[11px] text-[7px] items-center player cursor-pointer select-none absolute left-[' +
           defender.left.toString() +
           '%] top-[' +
           defender.top.toString() +
@@ -306,7 +306,7 @@
           width="20px"
           height="20px"
           viewBox="267 346 216 219"
-          class="jersey-svg"
+          class="jersey-svg xl:w-6 lg:w-5 md:w-3 w-2"
         >
           <defs>
             <radialGradient
@@ -391,7 +391,7 @@
         />
         <p
           [class]="'pla player-' + defender.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
         >
           {{ defender.name }}
         </p>
@@ -400,7 +400,7 @@
         *ngFor="let midfield of data.formations[selected].midfielders"
         (click)="toggleInput(midfield.id, midfield.name || '', $event)"
         [class]="
-          'lg:w-14 lg:h-14 w-10 h-10 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
+          'xl:w-14 xl:h-14 lg:w-12 lg:h-12 md:w-10 md:h-10 w-7 h-7 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           midfield.left.toString() +
           '%] top-[' +
           midfield.top.toString() +
@@ -411,7 +411,7 @@
           width="20px"
           height="20px"
           viewBox="267 346 216 219"
-          class="jersey-svg"
+          class="jersey-svg xl:w-6 lg:w-5 md:w-3 w-2"
         >
           <defs>
             <radialGradient
@@ -496,7 +496,7 @@
         />
         <p
           [class]="'pla player-' + midfield.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
         >
           {{ midfield.name }}
         </p>
@@ -505,7 +505,7 @@
         *ngFor="let attacker of data.formations[selected].attackers"
         (click)="toggleInput(attacker.id, attacker.name || '', $event)"
         [class]="
-          'lg:w-14 lg:h-14 w-10 h-10 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
+          'xl:w-14 xl:h-14 lg:w-12 lg:h-12 md:w-10 md:h-10 w-7 h-7 p-0 flex flex-col justify-center cursor-pointer lg:text-[11px] text-[7px] player items-center select-none absolute left-[' +
           attacker.left.toString() +
           '%] top-[' +
           attacker.top.toString() +
@@ -516,7 +516,7 @@
           width="20px"
           height="20px"
           viewBox="267 346 216 219"
-          class="jersey-svg"
+          class="jersey-svg xl:w-6 lg:w-5 md:w-3 w-2"
         >
           <defs>
             <radialGradient
@@ -601,7 +601,7 @@
         />
         <p
           [class]="'pla player-' + attacker.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-xs text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
         >
           {{ attacker.name }}
         </p>
