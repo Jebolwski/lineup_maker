@@ -71,12 +71,14 @@
               </div>
 
               <div
-                class="flex items-center gap-2 my-1 bg-zinc-700 rounded-md border cursor-pointer border-zinc-600"
+                class="flex items-center xl:text-lg lg:text-base text-sm gap-2 my-1 bg-zinc-700 rounded-md border cursor-pointer border-zinc-600"
                 *ngFor="let player of searchedPlayers"
                 (click)="addPlayerToFormation(player || '', id)"
               >
-                <img [src]="player.photo" class="w-8" />
-                <p class="text-[1.2rem]">{{ player.name }}</p>
+                <img [src]="player.photo" class="xl:w-8 md:w-7 w-6" />
+                <p>
+                  {{ player.name }}
+                </p>
                 <p class="">|</p>
                 <p class="">{{ player.position }}</p>
                 <p class="">|</p>
