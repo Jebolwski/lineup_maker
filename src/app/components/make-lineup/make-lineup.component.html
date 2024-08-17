@@ -49,7 +49,7 @@
             </button>
             <div
               *ngIf="searchedPlayers.length > 0"
-              class="absolute bg-zinc-800 border players-div border-zinc-700 rounded-md shadow-md top-8 pt-8 p-1 lg:w-96 w-48 overflow-x-hidden max-h-[12rem] overflow-y-scroll"
+              class="absolute bg-zinc-800 border players-div border-zinc-700 rounded-md shadow-md top-8 pt-8 p-1 lg:w-96 w-max overflow-x-hidden max-h-[12rem] overflow-y-scroll"
             >
               <p class="absolute top-2 left-2 font-semibold">Players</p>
               <div class="absolute right-4 top-[13px]">
@@ -286,7 +286,7 @@
           class="xl:w-12 xl:h-12 lg:w-10 lg:h-10 md:w-8 md:h-8 w-6 h-6"
         />
         <p
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center pla player-644"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[8px] text-center pla player-644"
         >
           GK
         </p>
@@ -391,7 +391,7 @@
         />
         <p
           [class]="'pla player-' + defender.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[8px] text-center"
         >
           {{ defender.name }}
         </p>
@@ -496,7 +496,7 @@
         />
         <p
           [class]="'pla player-' + midfield.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[8px] text-center"
         >
           {{ midfield.name }}
         </p>
@@ -601,7 +601,7 @@
         />
         <p
           [class]="'pla player-' + attacker.id"
-          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[10px] text-center"
+          class="xl:text-lg lg:text-base md:text-sm sm:text-xs text-[8px] text-center"
         >
           {{ attacker.name }}
         </p>

@@ -294,6 +294,8 @@ export class MakeLineupComponent implements OnInit {
 
   addPlayerToFormation(player_data: any, place: any) {
     console.log(player_data, place);
+    let name_arr = player_data.name.split(' ');
+    player_data.name = name_arr[name_arr.length - 1];
 
     let div = document.querySelector('.player-' + place);
     if (div) {
@@ -304,7 +306,6 @@ export class MakeLineupComponent implements OnInit {
       photo.classList.toggle('hidden');
     }
     console.log(photo);
-
     photo.src = player_data.photo;
     this.playerName = '';
     this.closeDiv();
